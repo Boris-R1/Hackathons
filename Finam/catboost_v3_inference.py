@@ -277,8 +277,7 @@ class CatBoostSolution:
     
     def specify_features(self):
         # Подготовка фичей (исключаем служебные колонки и таргеты)
-        exclude_cols = ['begin', 'target_return_1d', 'target_direction_1d', 
-                    'target_return_20d', 'target_direction_20d']
+        exclude_cols = ['begin'] + [col for col in self.df.columns if col.startswith("target_")]
         
         harmful_features = ['resistance_20', 'macd', 'sma_20', 'momentum_20']
         
